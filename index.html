@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Research Agent - Powered by IBM Granite</title>
+    <link rel="stylesheet" href="style.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav class="navbar">
+        <div class="container">
+            <div class="nav-brand">
+                <h2>AI Research Agent</h2>
+                <span class="nav-subtitle">Powered by IBM Granite</span>
+            </div>
+            <div class="nav-links">
+                <button class="nav-link active" data-module="dashboard">Dashboard</button>
+                <button class="nav-link" data-module="literature">Literature Search</button>
+                <button class="nav-link" data-module="analysis">Document Analysis</button>
+                <button class="nav-link" data-module="hypothesis">Hypothesis Generation</button>
+                <button class="nav-link" data-module="citations">Citation Management</button>
+                <button class="nav-link" data-module="reports">Report Generation</button>
+                <button class="nav-link" data-module="settings">Settings</button>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Dashboard Module -->
+    <div id="dashboard" class="module active">
+        <div class="container">
+            <!-- Hero Section -->
+            <div class="hero-section">
+                <h1>AI Research Agent</h1>
+                <h2>Powered by IBM Granite Models</h2>
+                <p class="hero-description">
+                    Revolutionize your research workflow with AI-powered literature analysis, hypothesis generation, 
+                    and automated report creation. Leverage IBM Granite's advanced language models for comprehensive 
+                    academic and scientific research assistance.
+                </p>
+                <div class="hero-actions">
+                    <button class="btn btn--primary btn--lg" onclick="switchModule('literature')">Start Research</button>
+                    <button class="btn btn--outline btn--lg" onclick="showWorkflowModal()">View Workflow</button>
+                </div>
+            </div>
+
+            <!-- Statistics Cards -->
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-icon">📄</div>
+                    <div class="stat-content">
+                        <h3 id="papers-count">15,420</h3>
+                        <p>Papers Processed</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📚</div>
+                    <div class="stat-content">
+                        <h3 id="citations-count">48,930</h3>
+                        <p>Citations Managed</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">📊</div>
+                    <div class="stat-content">
+                        <h3 id="reports-count">1,250</h3>
+                        <p>Reports Generated</p>
+                    </div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-icon">💡</div>
+                    <div class="stat-content">
+                        <h3 id="hypotheses-count">890</h3>
+                        <p>Hypotheses Created</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- System Architecture -->
+            <div class="section">
+                <h3>System Architecture</h3>
+                <div class="architecture-container">
+                    <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/0fa599a5cc76f274c87d0ceca09d67c4/2af7d0bc-12fc-4b52-b70f-3f6f0d7803a6/3e195209.png" alt="AI Research Agent System Architecture" class="architecture-diagram">
+                </div>
+            </div>
+
+            <!-- Granite Models Overview -->
+            <div class="section">
+                <h3>IBM Granite Models</h3>
+                <div class="models-grid">
+                    <div class="model-card">
+                        <h4>Granite 3.2 8B Instruct</h4>
+                        <p class="model-params">8B Parameters</p>
+                        <p>General-purpose instruction-following model optimized for research tasks</p>
+                        <div class="model-tags">
+                            <span class="tag">Text Generation</span>
+                            <span class="tag">Summarization</span>
+                            <span class="tag">Analysis</span>
+                        </div>
+                    </div>
+                    <div class="model-card">
+                        <h4>Granite 3.2 2B Instruct</h4>
+                        <p class="model-params">2B Parameters</p>
+                        <p>Lightweight model for fast processing and real-time applications</p>
+                        <div class="model-tags">
+                            <span class="tag">Quick Queries</span>
+                            <span class="tag">Classification</span>
+                            <span class="tag">Filtering</span>
+                        </div>
+                    </div>
+                    <div class="model-card">
+                        <h4>Granite Guardian 3.2</h4>
+                        <p class="model-params">Specialized Model</p>
+                        <p>Safety and quality control model for content validation</p>
+                        <div class="model-tags">
+                            <span class="tag">Content Moderation</span>
+                            <span class="tag">Quality Assessment</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Literature Search Module -->
+    <div id="literature" class="module">
+        <div class="container">
+            <div class="module-header">
+                <h2>Literature Search</h2>
+                <p>Search and discover relevant academic papers using AI-powered semantic search</p>
+            </div>
+
+            <div class="search-container">
+                <div class="search-form">
+                    <div class="search-input-group">
+                        <input type="text" id="search-query" class="form-control search-input" placeholder="Enter research query (e.g., 'multi-agent systems for scientific discovery')">
+                        <button class="btn btn--primary search-btn" onclick="performSearch()">Search</button>
+                    </div>
+                    <div class="search-filters">
+                        <select class="form-control filter-select">
+                            <option>All Years</option>
+                            <option>2023-2024</option>
+                            <option>2020-2023</option>
+                            <option>2015-2020</option>
+                        </select>
+                        <select class="form-control filter-select">
+                            <option>All Venues</option>
+                            <option>NeurIPS</option>
+                            <option>AAAI</option>
+                            <option>ACL</option>
+                            <option>ICML</option>
+                        </select>
+                        <select class="form-control filter-select">
+                            <option>All Databases</option>
+                            <option>arXiv</option>
+                            <option>IEEE Xplore</option>
+                            <option>ACM Digital Library</option>
+                            <option>Google Scholar</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="search-results" id="search-results">
+                    <!-- Results will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Document Analysis Module -->
+    <div id="analysis" class="module">
+        <div class="container">
+            <div class="module-header">
+                <h2>Document Analysis</h2>
+                <p>Extract key information and generate insights from selected research papers</p>
+            </div>
+
+            <div class="analysis-container">
+                <div class="upload-section">
+                    <div class="upload-area" onclick="simulateUpload()">
+                        <div class="upload-icon">📎</div>
+                        <h4>Upload Documents or Select from Search Results</h4>
+                        <p>Drag and drop files here or click to browse</p>
+                        <button class="btn btn--outline">Choose Files</button>
+                    </div>
+                </div>
+
+                <div class="analysis-results" id="analysis-results">
+                    <!-- Analysis results will be populated by JavaScript -->
+                </div>
+
+                <div class="knowledge-graph-container" id="knowledge-graph">
+                    <h3>Knowledge Graph</h3>
+                    <div class="graph-placeholder">
+                        <p>Interactive knowledge graph will appear here after document analysis</p>
+                        <div class="graph-demo">
+                            <div class="node concept">Multi-Agent Systems</div>
+                            <div class="node entity">Research Automation</div>
+                            <div class="node relationship">Scientific Discovery</div>
+                            <div class="connection"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hypothesis Generation Module -->
+    <div id="hypothesis" class="module">
+        <div class="container">
+            <div class="module-header">
+                <h2>Hypothesis Generation</h2>
+                <p>Generate testable hypotheses based on your research context and literature analysis</p>
+            </div>
+
+            <div class="hypothesis-container">
+                <div class="hypothesis-form">
+                    <div class="form-group">
+                        <label class="form-label">Research Question</label>
+                        <textarea class="form-control" id="research-question" rows="3" placeholder="Enter your main research question..."></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Context & Background</label>
+                        <textarea class="form-control" id="research-context" rows="4" placeholder="Provide relevant context and background information..."></textarea>
+                    </div>
+                    <button class="btn btn--primary" onclick="generateHypotheses()">Generate Hypotheses</button>
+                </div>
+
+                <div class="hypothesis-results" id="hypothesis-results">
+                    <!-- Generated hypotheses will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Citation Management Module -->
+    <div id="citations" class="module">
+        <div class="container">
+            <div class="module-header">
+                <h2>Citation Management</h2>
+                <p>Organize, format, and validate your research citations</p>
+            </div>
+
+            <div class="citation-container">
+                <div class="citation-toolbar">
+                    <select class="form-control citation-format">
+                        <option>APA Style</option>
+                        <option>MLA Style</option>
+                        <option>Chicago Style</option>
+                        <option>IEEE Style</option>
+                    </select>
+                    <button class="btn btn--outline" onclick="validateCitations()">Validate Citations</button>
+                    <button class="btn btn--outline" onclick="detectDuplicates()">Detect Duplicates</button>
+                    <button class="btn btn--primary" onclick="exportCitations()">Export Bibliography</button>
+                </div>
+
+                <div class="citation-list" id="citation-list">
+                    <!-- Citations will be populated by JavaScript -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Report Generation Module -->
+    <div id="reports" class="module">
+        <div class="container">
+            <div class="module-header">
+                <h2>Report Generation</h2>
+                <p>Generate comprehensive research reports with AI assistance</p>
+            </div>
+
+            <div class="report-container">
+                <div class="report-templates">
+                    <h3>Select Report Template</h3>
+                    <div class="template-grid">
+                        <div class="template-card active" data-template="research-paper">
+                            <h4>Research Paper</h4>
+                            <p>Full academic paper with all sections</p>
+                        </div>
+                        <div class="template-card" data-template="literature-review">
+                            <h4>Literature Review</h4>
+                            <p>Comprehensive literature analysis</p>
+                        </div>
+                        <div class="template-card" data-template="technical-report">
+                            <h4>Technical Report</h4>
+                            <p>Technical documentation and findings</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="report-sections">
+                    <h3>Report Sections</h3>
+                    <div class="sections-list" id="report-sections">
+                        <!-- Report sections will be populated by JavaScript -->
+                    </div>
+                </div>
+
+                <div class="report-generation">
+                    <button class="btn btn--primary btn--lg" onclick="generateReport()">Generate Report</button>
+                    <div class="generation-progress hidden" id="generation-progress">
+                        <div class="progress-bar">
+                            <div class="progress-fill"></div>
+                        </div>
+                        <p class="progress-text">Generating report sections...</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Settings Module -->
+    <div id="settings" class="module">
+        <div class="container">
+            <div class="module-header">
+                <h2>Settings & Configuration</h2>
+                <p>Configure your AI Research Agent preferences and IBM Granite model settings</p>
+            </div>
+
+            <div class="settings-container">
+                <div class="settings-section">
+                    <h3>IBM Granite Model Selection</h3>
+                    <div class="model-selection">
+                        <div class="model-option">
+                            <input type="radio" id="granite-8b" name="granite-model" value="8b" checked>
+                            <label for="granite-8b">
+                                <strong>Granite 3.2 8B Instruct</strong>
+                                <span>Best for complex analysis and generation tasks</span>
+                            </label>
+                        </div>
+                        <div class="model-option">
+                            <input type="radio" id="granite-2b" name="granite-model" value="2b">
+                            <label for="granite-2b">
+                                <strong>Granite 3.2 2B Instruct</strong>
+                                <span>Faster processing for quick queries</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3>Output Preferences</h3>
+                    <div class="form-group">
+                        <label class="form-label">Default Citation Format</label>
+                        <select class="form-control">
+                            <option>APA Style</option>
+                            <option>MLA Style</option>
+                            <option>Chicago Style</option>
+                            <option>IEEE Style</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label class="form-label">Summary Length</label>
+                        <select class="form-control">
+                            <option>Concise (100-200 words)</option>
+                            <option>Standard (200-400 words)</option>
+                            <option>Detailed (400-600 words)</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="settings-section">
+                    <h3>API Configuration</h3>
+                    <div class="api-status">
+                        <div class="status-indicator">
+                            <div class="status-dot active"></div>
+                            <span>IBM Cloud Connected</span>
+                        </div>
+                        <div class="api-info">
+                            <p><strong>Region:</strong> Dallas (us-south)</p>
+                            <p><strong>Service Plan:</strong> Lite (Free)</p>
+                            <p><strong>Usage:</strong> 342/1000 API calls this month</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Workflow Modal -->
+    <div id="workflow-modal" class="modal hidden">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>Research Workflow Process</h3>
+                <button class="modal-close" onclick="closeModal('workflow-modal')">&times;</button>
+            </div>
+            <div class="modal-body">
+                <img src="https://ppl-ai-code-interpreter-files.s3.amazonaws.com/web/direct-files/0fa599a5cc76f274c87d0ceca09d67c4/86a5d414-ce58-41c8-ad2a-6366ad97bf0d/8dd0bb0e.png" alt="Research Agent Workflow" class="workflow-diagram">
+                <p>This flowchart illustrates the complete AI Research Agent workflow, from initial query to final research report generation, powered by IBM Granite models.</p>
+            </div>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
